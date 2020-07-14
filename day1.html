@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Q1</h2>
+<p id="demo4"></p>
+<p id="demo5"></p>
+
+<h2>Q2</h2>
+
+<button onclick="window.print()">Print this page</button>
+<h2>Q3</h2>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+
+<script>
+
+
+
+
+var d = new Date();
+
+var c=d.getDay();
+
+
+var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var c = new Date(c);
+var dayName = days[c.getDay()-2];
+
+document.getElementById("demo4").innerHTML = dayName;
+
+
+
+function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
+}
+
+document.getElementById("demo").innerHTML = formatAMPM(new Date);
+
+
+
+var today = new Date(); 
+var dd = today.getDate(); 
+var mm = today.getMonth()+1; //January is 0! 
+var yyyy = today.getFullYear(); 
+if(dd<10)
+{
+    dd='0'+dd
+} 
+if(mm<10)
+{  
+    mm='0'+mm 
+} 
+var today = dd+'/'+mm+'/'+yyyy; 
+var today1 = dd+'-'+mm+'-'+yyyy; 
+var today2 = mm+'/'+dd+'/'+yyyy; 
+var today3 = mm+'-'+dd+'-'+yyyy; 
+
+
+
+
+document.getElementById("demo").innerHTML = today;
+document.getElementById("demo1").innerHTML = today1;
+document.getElementById("demo2").innerHTML = today2;
+document.getElementById("demo3").innerHTML = today3;
+
+
+
+
+
+var d = new Date();
+var hour = d.getHours(); 
+var minute = d.getMinutes();
+var second=d.getSeconds();
+var fulltime = "";
+
+// create a 24 elements(0-23) array containing following values
+const arrayHrs = [12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11];
+
+    // since getMinutes() returns 0 to 9 for upto 9 minutes, not 00 to 09, we can do this
+    if(minute < 10) {
+        minute = "0" + minute;
+    }
+
+    if( hour < 12) {
+        // Just for an example, if hour = 11 and minute = 29
+        fulltime = arrayHrs[hour] + " AM "+ " : " + minute +  " : " +second; // fulltime = 11:29 AM
+    }
+    else {
+        // similarly, if hour = 22 and minute = 8
+        fulltime = arrayHrs[hour]+ " PM " + " : " + minute+ " : "  + second ; // fulltime = 10:08 PM
+    }
+	document.getElementById("demo5").innerHTML = fulltime;
+
+</script>
+
+
+</body>
+</html>
